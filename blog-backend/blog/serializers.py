@@ -1,7 +1,7 @@
-from django.urls import path, include
-from django.contrib.auth.models import User
-from rest_framework import routers, serializers, viewsets
-class UserSerializer(serializers.HyperlinkedModelSerializer):
+from .models import BlogPost
+from rest_framework import serializers
+class BlogPostSerializer(serializers.ModelSerializer):
     class Meta:
-        model = User
-        fields = ['url', 'username', 'email', 'is_staff']
+        model = BlogPost
+        fields = '__all__'
+        lookup_field = 'slug'
